@@ -1,0 +1,19 @@
+<div class="container-fluid" id="list">
+    <div class="row" *ngIf="trailers">
+        <div class="col-md-3 trailer-item" *ngFor="let trailer of trailers">
+            <a href="https://www.youtube.com/watch?v={{ trailer.id.videoId }}" class="trailer-link" target="_blank">
+                <div class="card" >
+                    <img src="{{ trailer.snippet.thumbnails.medium.url }}" class="card-img-top">
+                    <div class="card-body">
+                    <p class="card-text trailer-title">{{ trailer.snippet.title }}</p>
+                    <p class="trailer-meta">{{ formatTimestamp(trailer.snippet.publishedAt) }} · {{ trailer.snippet.channelTitle }}</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        
+
+    </div>
+    
+    
+</div>
