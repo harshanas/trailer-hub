@@ -5,9 +5,19 @@
 .card{
     border: unset;
     border-radius: unset;
-    font-family: 'roboto', sans-serif;
-    font-weight: bold;
     background-color: unset;
+}
+
+.trailer-title{
+    font-family: 'roboto', sans-serif;
+    font-weight: bold; 
+    margin-bottom: unset;
+}
+
+.trailer-meta{
+    font-family: 'roboto', sans-serif;
+    font-size: 0.9rem;
+    color: trailerMeta;
 }
 
 .trailer-item{
