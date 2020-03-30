@@ -1,19 +1,29 @@
 <div class="container-fluid" id="list">
-    <div class="row" *ngIf="trailers">
-        <div class="col-md-3 trailer-item" *ngFor="let trailer of trailers">
-            <a href="https://www.youtube.com/watch?v={{ trailer.id.videoId }}" class="trailer-link" target="_blank">
-                <div class="card" >
-                    <img src="{{ trailer.snippet.thumbnails.medium.url }}" class="card-img-top">
-                    <div class="card-body">
-                    <p class="card-text trailer-title">{{ trailer.snippet.title }}</p>
-                    <p class="trailer-meta">{{ formatTimestamp(trailer.snippet.publishedAt) }} · {{ trailer.snippet.channelTitle }}</p>
+    <ng-container
+    *ngIf="trailers.length > 0; then trailersList; else listError">
+    </ng-container>
+    <ng-template #trailersList>
+        <div class="row">
+            <div class="col-md-3 trailer-item" *ngFor="let trailer of trailers">
+                <a href="https://www.youtube.com/watch?v={{ trailer.id.videoId }}" class="trailer-link" target="_blank">
+                    <div class="card" >
+                        <img src="{{ trailer.snippet.thumbnails.medium.url }}" class="card-img-top">
+                        <div class="card-body">
+                        <p class="card-text trailer-title">{{ trailer.snippet.title }}</p>
+                        <p class="trailer-meta">{{ formatTimestamp(trailer.snippet.publishedAt) }} · {{ trailer.snippet.channelTitle }}</p>
+                        </div>
                     </div>
-                </div>
-            </a>
+                </a>
+            </div>
         </div>
-        
+    </ng-template>
+    
 
-    </div>
+    <ng-template #listError>
+        <div class="alert alert-danger container text-center" role="alert">
+            Sorry! YouTube API Quota Exceeded. ☹ Please visit TrailerHub Tomorrow. 
+          </div>
+    </ng-template>
     
     
 </div>
